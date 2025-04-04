@@ -11,6 +11,16 @@ if ( isset($_REQUEST['todo']) ){
   
   switch($todo){
 
+    case 'addmovie':
+
+
+
+
+
+      
+      $data = updateController($name, $year, $length, $description, $director, $id_category,$image, $trailer, $min_age);
+      break;
+
     case 'readmovies': 
       $data = readMoviesController();
       break;

@@ -8,15 +8,28 @@
   </head>
   <body>
     <section id="log"></section>
+    <section id="addMovies"></section>
 
     <script type="module">
       import { Log } from "./component/Log/script.js";
+
+      import { MovieFrom } from "./component/MovieFrom/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
 
       window.C = {};
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
+        V.renderMovieFrom("C.handlerAddMovie()");
       };
+
+
+      C.handlerAddMovie = async function(){
+            let form = document.querySelector('.addMovie__form');
+            let fd = new FormData(form);
+            let res = await DataMovie.add(fd);
+            V.renderLog(res);
+        }
 
       window.V = {};
 
@@ -25,7 +38,13 @@
         content.innerHTML = Log.format(txt);
       };
 
+      V.renderMovieFrom = function (handler) {
+        let content = document.querySelector("#addMovie");
+        content.innerHTML = MovieFrom.format(handler);
+      };
+
       C.start();
+     
     </script>
   </body>
 </html>

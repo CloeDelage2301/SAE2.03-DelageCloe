@@ -25,3 +25,24 @@ function readMoviesController(){
     return $movies;
 }
 
+function updateController(){
+ 
+    $name = $_REQUEST['name'];
+    $year = $_REQUEST['year'];
+    $length = $_REQUEST['length'];
+    $description = $_REQUEST['description'];
+    $director = $_REQUEST['director'];
+    $id_category = $_REQUEST['id_category'];
+    $image = $_REQUEST['image'];
+    $trailer = $_REQUEST['trailer'];
+    $min_age = $_REQUEST['min_age'];
+
+    $ok = updateMovies($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age );
+   
+    if ($ok!=0){
+      return "Le film $name à été ajouté avec succcès";
+    }
+    else{
+      return "Il y a eu une erreur lors de l'ajout du film $name";
+    }
+  }
